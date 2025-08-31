@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
-void fullName(String firstname, String LastName) =>
-    print("$firstname $LastName");
+void fullName(String firstname, String LastName) {
+  print("$firstname $LastName");
+  var names = ["sai ", "bhargav"];
+  print(names[1]);
+
+  var dta = {'sai', 'charan'};
+  var dic = {"name": 'saicharna', "age": 20};
+}
 
 void main() {
   runApp(MyApp());
