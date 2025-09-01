@@ -7,6 +7,8 @@ void fullName(String firstname, String LastName) {
 
   var dta = {'sai', 'charan'};
   var dic = {"name": 'saicharna', "age": 20};
+
+  const String? naem = null;
 }
 
 void main() {
