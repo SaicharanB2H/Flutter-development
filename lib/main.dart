@@ -11,48 +11,76 @@ void fullName(String firstname, String LastName) {
   const String? naem = null;
 }
 
+class Person {
+  void run() {
+    print("person is running");
+  }
+
+  void breathe() {
+    print("person is breathing");
+  }
+}
+
+void test() {
+  var per = Person();
+  per.run();
+}
+
+var cnt = 0;
 void main() {
-  runApp(MyApp());
+  runApp(
+    MaterialApp(
+      title: "Flutter demo",
+      theme: ThemeData(primarySwatch: Colors.amber),
+      home: const MyApp(),
+    ),
+  );
 }
 
 // StatefulWidget allows the UI to change
+
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
-  _MyAppState createState() => _MyAppState();
+  _MainState createState() => _MainState();
 }
 
-class _MyAppState extends State<MyApp> {
-  String displayText = "Hello Flutter!"; // initial text
+class _MainState extends State<MyApp> {
 
-  void toggleText() {
-    setState(() {
-      if (displayText == "Hello Flutter!") {
-        displayText = "You pressed the button";
-      } else {
-        displayText = "hello world";
-      }
-    });
+  late final TextEditingController _email;
+  late final TextEditingController _password;
+
+  @override
+  void initState() {
+    _email = TextEditingController();
+    _password = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _email.dispose();
+    _password.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    fullName("sai", "charan");
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('Interactive App')),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(displayText, style: TextStyle(fontSize: 24)),
-              SizedBox(height: 20), // adds space between text and button
-              ElevatedButton(onPressed: toggleText, child: Text("Press Me")),
-            ],
-          ),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("PhonePay"),
+        backgroundColor: Color.fromARGB(226, 254, 68, 111),
+      ),
+      body: Column(
+        children: [
+          TextField(controller: _email,decoration: InputDecoration(hintText: "Email"),),
+          TextField(controller: _password,decoration: InputDecoration(hintText: "Password"),),
+          TextButton(onPressed: () async {}, child: const Text("Register")),
+        ],
       ),
     );
   }
 }
+  
+//network
